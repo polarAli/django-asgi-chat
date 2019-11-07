@@ -1,0 +1,36 @@
+{% extends 'users/content_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-section">
+        <h1>{{ room_name }}</h1>
+        <p class="quiet">
+            Anyone with this URL can join the room and chat:
+            <code>{{ request.scheme }}://{{ request.get_host }}/chat/{{ room_name }}</code>
+        </p>
+        <input id="handle" type="text" placeholder="handle" value="{{ request.user.pk }}" hidden>
+        <form id="chatform">
+            <table id="chat">
+                <tbody>
+                {% for message in chat_messages %}
+                    <tr>
+                        <td>{{ message.sender.username }}</td>
+                        <td>{{ message.text }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>Say something:</td>
+                    <td colspan=2>
+                        <input id="message" type="text" placeholder="message">
+                        <button type="submit" id="go">Say it</button>
+                    </td>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src='{% static 'chat/reconnecting-websocket.min.js' %}'></script>
+    <script type="text/javascript" src='{% static 'chat/chat.js' %}'></script>
+{% endblock %}

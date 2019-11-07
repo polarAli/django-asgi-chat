@@ -1,0 +1,13 @@
+{% extends 'users/content_base.html' %}
+{% block title %}
+    Chat Rooms
+{% endblock %}
+{% block body %}
+    <div class="content-section">
+        <ul>
+            {% for group in groups %}
+                <li><a href="{% url 'chat-room' group.name %}">{{ group.name }}</a> </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
