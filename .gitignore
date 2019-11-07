@@ -125,7 +125,7 @@ dmypy.json
 .pyre/
 
 # My files
-media/
 .idea
 test.py
 staticfiles/
+media/
