@@ -30,6 +30,7 @@ psycopg2-binary==2.8.5
 pytz==2019.3
 redis==3.3.11
 six==1.13.0
+sentry-sdk==0.10.2
 sqlparse==0.3.0
 Twisted==19.7.0
 txaio==18.8.1
